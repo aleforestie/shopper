@@ -1,0 +1,22 @@
+{% load staticfiles %}
+{% load mytags %}
+<!DOCTYPE html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  {% block css %}
+  {% endblock %}
+</head>
+
+<body>
+  <h1>La maman d'ALF is the header</h1>
+  {% block content %}
+  {% endblock %}
+
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  {% block javascript %}
+  {% endblock %}
+</body>
+</html>
