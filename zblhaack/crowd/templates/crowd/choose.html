@@ -1,0 +1,32 @@
+{% extends 'crowd/base.html' %}
+{% load static %}
+{% load mytags %}
+
+{% block title %}Product list{% endblock %}
+
+{% block content %}
+<form action="{% url 'crowd:product-ask' %}" method="post">
+    {% csrf_token %}
+    <select name="family">
+      <option value="">None</option>
+      <option value="t-shirt">t-shirt</option>
+      <option value="jacket">jacket</option>
+      <option value="sport shoe">sport shoe</option>
+      <option value="pants">pants</option>
+    </select>
+    <select name="brand">
+      <option value="">None</option>
+      <option value="hype brand">hype brand</option>
+      <option value="alf brand">alf brand</option>
+      <option value="annick brand">annick brand</option>
+    </select>
+    <select name="color">
+      <option value="">None</option>
+      <option value="red">red</option>
+      <option value="blue">blue</option>
+      <option value="black">black</option>
+      <option value="white">white</option>
+    </select>
+    <button type="submit">Valider</button>
+</form>
+{% endblock %}

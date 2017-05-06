@@ -1,5 +1,6 @@
 {% extends 'crowd/base.html' %}
-{% load staticfiles %}
+{% load static %}
+{% load mytags %}
 
 {% block title %}Product list{% endblock %}
 
@@ -9,7 +10,7 @@
   <div style="border:1px solid black;">
     <p>Nom : {{ product.name }}</p>
     <p>Main color : {{ product.main_color }}</p>
-    <a href="#">Donner son avis sur ce produit</a>
+    <img src="{% myurl product.pic %}" />
   </div>
   {% endfor %}
 

@@ -8,3 +8,9 @@ def connect_or_login(user):
         return user.username
     else:
         return "Se connecter"
+
+@register.simple_tag()
+def myurl(pic):
+    lol = pic.url.split("/")
+    img = lol.pop()
+    return "/static/crowd/images/" + img

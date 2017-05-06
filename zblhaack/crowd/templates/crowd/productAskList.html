@@ -1,0 +1,90 @@
+{% extends 'crowd/base.html' %}
+{% load static %}
+{% load mytags %}
+
+{% block title %}Product list{% endblock %}
+
+{% block content %}
+
+  {% for product in products %}
+  <div id="p{{product.id}}" style="border:1px solid black;">
+    <p>Nom : {{ product.name }}</p>
+    <p>Main color : {{ product.main_color }}</p>
+    <img src="{% myurl product.pic %}" />
+
+    <button type="button" onclick="nop({{product.id}});">x</button>
+    <button type="button" onclick="ajax_yes();">ok</button>
+  </div>
+  {% endfor %}
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+var pks = {{pks}};
+pks.reverse();
+$(document).ready(function(){
+  pks.forEach(function(pk){
+    $("#p"+pk).hide();
+  });
+  var tmp = pks.pop();
+  $("#p"+tmp).show();
+  pks.push(tmp);
+});
+
+function getCookie(name) {
+  var cookieValue = null;
+  if (document.cookie && document.cookie != '') {
+      var cookies = document.cookie.split(';');
+      for (var i = 0; i < cookies.length; i++) {
+          var cookie = jQuery.trim(cookies[i]);
+          // Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) == (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+          }
+      }
+  }
+  return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+
+function csrfSafeMethod(method) {
+  return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+
+function ajax_yes(id){
+  console.log(pks);
+  var id = pks.pop();
+  $.ajax({
+    url: "/products/ask/ajaxYes/" + id + "/",
+    type : 'POST',
+    dataType : 'json',
+    success:
+      function(dico) {
+        if(dico.ok){
+          $("#p"+id).remove();
+          if(pks.length != 0){
+            var tmp = pks.pop();
+            console.log(tmp);
+            $("#p"+tmp).show();
+            pks.push(tmp);
+          }
+          else{
+            window.location.href = "{% url 'crowd:product-choose' %}";
+          }
+        }
+      }
+  });
+  return false;
+}
+</script>
+{% endblock %}
