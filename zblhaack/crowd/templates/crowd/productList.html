@@ -1,0 +1,17 @@
+{% extends 'crowd/base.html' %}
+{% load staticfiles %}
+
+{% block title %}Product list{% endblock %}
+
+{% block content %}
+
+  {% for product in object_list %}
+  <div style="border:1px solid black;">
+    <p>Nom : {{ product.name }}</p>
+    <p>Main color : {{ product.main_color }}</p>
+    <a href="#">Donner son avis sur ce produit</a>
+  </div>
+  {% endfor %}
+
+
+{% endblock %}

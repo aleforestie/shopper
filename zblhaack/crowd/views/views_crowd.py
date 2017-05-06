@@ -9,6 +9,8 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.decorators import method_decorator
 from django.core.urlresolvers import reverse_lazy
 
+from crowd.models import Product
+
 class HelloView(TemplateView):
     template_name = "crowd/hello.html"
 
@@ -22,3 +24,10 @@ class TestView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name, {})
+
+class ProductListView(ListView):
+    model = Product
+    template_name = 'crowd/productList.html'
+
+    """def get_queryset(self):
+        return Question.objects.order_by('-pub_date')[:5]""" #Pour filtrer la liste
