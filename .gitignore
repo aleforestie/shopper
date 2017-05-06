@@ -1,5 +1,6 @@
 \Lib
 \Include
 \Scripts
-__pycache__
-*.pyc
+\zblhaack\crowd\__pycache__
+\zblhaack\crowd\views\__pycache__
+\zblhaack\zblhaack\__pycache__
