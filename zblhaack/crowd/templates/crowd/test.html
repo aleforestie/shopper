@@ -2,8 +2,7 @@
 {% load staticfiles %}
 
 {% block css %}
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+
 {% endblock %}
 
 {% block content %}
@@ -22,36 +21,33 @@
 					</div>
 		</div>
 
-	<div id="id01" class="w3-center w3-modal" style="margin-left:33%; width:34%; border-radius: 20px;height:auto;margin-top: 60px; padding-top: 0px;     padding-bottom: 16px;">
+<!-- style="margin-left:33%; width:34%; border-radius: 20px;height:auto;margin-top: 60px; padding-top: 0px;     padding-bottom: 16px;" -->
 
-		<h4 style="margin-top: 30px; color: red; font-weight: bold;" >Check what does not fit you !</h4> <br>	
+	<div id="id01" class="w3-center w3-modal" >
 
-		<div>
-		  <input type="checkbox" id="cbox1" value="checkbox1" style="font-weight: bold;margin-top: 20px; margin-left: -115px; ">
-		  Too skinny ...
-		</div>
-		<div>
-			<input type="checkbox" id="cbox2" value="checkbox1" style="font-weight: bold;margin-top: 40px; margin-left: -115px; ">
-		  Too stupid ...
-		</div>
-		<div>
-		<label>
-		  <input type="checkbox" id="cbox1" value="checkbox1" style="font-weight: bold;margin-top: 45px; margin-left: -115px; ">
-		  Small beach ! <3 
-		</label>
-		</div>
-		<div>
-		<label>
-		<input type="checkbox" id="cbox2" value="checkbox1" style="font-weight: bold;margin-top: 45px; margin-left: -115px;  ">
-		  Answer D !
-		</label>
-		</div>
+		<div class="w3-card-4 w3-dark-white w3-center" style="width:30%; margin-left: auto;margin-right: auto; border-radius: 20px;">
+			<h4 style="margin-top: 30px; color: red; font-weight: bold;" >What's wrong ?</h4> <br>
+<!-- margin-left: -115px sur tous -->
+				<div>
+				  <input type="checkbox" id="cbox1" value="checkbox1" style="font-weight: bold;margin-top: 20px; margin-left: -115px; ">
+				  Couleur
+					<input type="checkbox" id="cbox2" value="checkbox1" style="font-weight: bold;margin-top: 40px; margin-left: -250px; ">
+				  Coupe
+				</div>
+				<div>
+				  <input type="checkbox" id="cbox1" value="checkbox1" style="font-weight: bold;margin-top: 45px; margin-left: -115px; ">
+				  Matériaux
+					<input type="checkbox" id="cbox2" value="checkbox1" style="font-weight: bold;margin-top: 45px; margin-left: -250px;  ">
+				  Je préfère Annick
+				</label>
+				</div>
 
-		<button class="w3-button w3-circle w3-blue" style="margin-top: 75px; width: 150px; margin-bottom: -10px;"onclick="document.getElementById('id01').style.display='none'" >
-      		<h4> Send </h4>
-      	</button>
+			<button class="w3-button w3-circle w3-blue" style="margin-top: 265px; width: 150px; margin-bottom: -10px;"onclick="document.getElementById('id01').style.display='none'" >
+      	<h4> Send </h4>
+      </button>
 
-	</div>
+		</div>
+</div>
 
 
 </div>
