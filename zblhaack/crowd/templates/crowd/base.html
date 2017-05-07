@@ -4,16 +4,30 @@
 <!DOCTYPE html>
 
 <head>
-  <title> Annick on l'Annick{% block title %}{% endblock %}</title>
-  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">-->
+
+  <h1 style="text-align:left;float:left; padding-left: 10px;">Shopper</h1> 
+  <h2 style="text-align:right;float:right;padding-right: 10px;">For the love shopping</h2> 
+  <div style="clear:both;"/>
+  <title> Shopper{% block title %}{% endblock %}</title>
+
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="{% static 'crowd/css/moke.css' %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  
+  <ul style="margin-bottom: 20px;">
+
+    <li><a href="default.asp">Home</a></li>
+    <li><a href="news.asp">Stats</a></li>
+    <li><a href="contact.asp">Add products</a></li>
+
+  </ul>
+
   {% block css %}
   {% endblock %}
 </head>
 
 <body>
-  <h1 style="text-align: center;">Annick on l'Annick</h1>
+
 
   {% block content %}
   {% endblock %}
