@@ -15,5 +15,9 @@ urlpatterns = [
         views.AjaxYes.as_view(),
         name='ajax-yes'),
 
+    url(r'^products/ask/ajaxNo/(?P<pk>[0-9]+)/$',
+        views.AjaxNo.as_view(),
+        name='ajax-no'),
+
 
 ]

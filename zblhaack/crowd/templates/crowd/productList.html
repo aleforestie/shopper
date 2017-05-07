@@ -6,13 +6,30 @@
 
 {% block content %}
 
+<div class="w3-container">
+
   {% for product in object_list %}
-  <div style="border:1px solid black;">
-    <p>Nom : {{ product.name }}</p>
-    <p>Main color : {{ product.main_color }}</p>
-    <img src="{% myurl product.pic %}" />
-  </div>
+    {% if forloop.counter|add:"-1"|divisibleby:'4' %}
+    <div class="w3-row-padding">
+    {% endif %}
+
+    <div class="w3-col l3 w3-margin-bottom"  style="overflow:hidden;">
+			<div class="w3-card w3-center">
+				<div style="overflow:hidden;">
+					<img style="max-height:40vh;" src="{% myurl product.pic %}"/>
+				</div>
+				<div class="w3-container w3-center w3-grey">
+			    <p>Name : {{ product.name }}</p>
+          <p>Rank : {{ forloop.counter }}</p>
+          <p>Popularity : {{ product.popularity }}</p>
+			  </div>
+			</div>
+		</div>
+
+    {% if forloop.counter|divisibleby:'4' %}
+    </div>
+    {% endif %}
   {% endfor %}
 
-
+</div>
 {% endblock %}

@@ -5,28 +5,38 @@
 {% block title %}Product list{% endblock %}
 
 {% block content %}
-<form action="{% url 'crowd:product-ask' %}" method="post">
-    {% csrf_token %}
-    <select name="family">
-      <option value="">None</option>
-      <option value="t-shirt">t-shirt</option>
-      <option value="jacket">jacket</option>
-      <option value="sport shoe">sport shoe</option>
-      <option value="pants">pants</option>
-    </select>
-    <select name="brand">
-      <option value="">None</option>
-      <option value="hype brand">hype brand</option>
-      <option value="alf brand">alf brand</option>
-      <option value="annick brand">annick brand</option>
-    </select>
-    <select name="color">
-      <option value="">None</option>
-      <option value="red">red</option>
-      <option value="blue">blue</option>
-      <option value="black">black</option>
-      <option value="white">white</option>
-    </select>
-    <button type="submit">Valider</button>
-</form>
+<div class="w3-container">
+  <div class="w3-container w3-light-grey">
+    <h2>What do you want to shop ?</h2>
+  </div>
+  <div class="w3-container w3-margin-top">
+    <form action="{% url 'crowd:product-ask' %}" method="post">
+        {% csrf_token %}
+        <p><label>Product family</label>
+        <select name="family" class="w3-select w3-border">
+          <option value="">None</option>
+          <option value="t-shirt">t-shirt</option>
+          <option value="jacket">jacket</option>
+          <option value="sport shoe">sport shoe</option>
+          <option value="pants">pants</option>
+        </select></p>
+        <p><label>Brand</label>
+        <select name="brand" class="w3-select w3-border">
+          <option value="">None</option>
+          <option value="hype brand">hype brand</option>
+          <option value="alf brand">alf brand</option>
+          <option value="annick brand">annick brand</option>
+        </select></p>
+        <p><label>Color</label>
+        <select name="color" class="w3-select w3-border">
+          <option value="">None</option>
+          <option value="red">red</option>
+          <option value="blue">blue</option>
+          <option value="black">black</option>
+          <option value="white">white</option>
+        </select></p>
+        <button class="w3-btn w3-light-grey" type="submit">Valider</button>
+    </form>
+  </div>
+</div>
 {% endblock %}

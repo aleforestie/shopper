@@ -12,6 +12,7 @@ from django.core.urlresolvers import reverse_lazy
 
 from django.db.models import F
 from crowd.models import Product, FavoriteColor, FavoriteBrand, FavoriteFamily
+import json
 
 class HelloView(TemplateView):
     template_name = "crowd/hello.html"
@@ -105,6 +106,21 @@ class AjaxYes(View):
     def get(self, request, *args, **kwargs):
         get_object_or_404(Favorite, pk=-1)
 
+class AjaxNo(View):
+    def post(self, request, *args, **kwargs):
+        pk = kwargs.get('pk', '-1')
+        pr = get_object_or_404(Product, pk=pk)
+        pr.popularity = F('popularity') - 1
+        pr.save()
+        data = {
+            'ok':True,
+        }
+        return JsonResponse(data)
+
+    #Ameliorer avec un vrai inaccessible si get
+    def get(self, request, *args, **kwargs):
+        get_object_or_404(Favorite, pk=-1)
+
 class ChooseView(TemplateView):
     template_name = 'crowd/choose.html'
 
@@ -115,4 +131,32 @@ class DisplayView(TemplateView):
     template_name = 'crowd/display.html'
 
     def get(self, request, *args, **kwargs):
-        return render(request, self.template_name, {})
+        colors, colors_count = [], []
+        brands, brands_count = [], []
+        families, families_count = [], []
+
+        lol = FavoriteColor.objects.get(pk=1)
+        lol = lol.__dict__
+        for key,value in lol.items():
+            if(key != 'id' and key !='_state'):
+                colors.append(key)
+                colors_count.append(value)
+        colors = json.dumps(colors)
+
+        lol = FavoriteBrand.objects.get(pk=1)
+        lol = lol.__dict__
+        for key,value in lol.items():
+            if(key != 'id' and key !='_state'):
+                brands.append(key)
+                brands_count.append(value)
+        brands = json.dumps(brands)
+
+        lol = FavoriteFamily.objects.get(pk=1)
+        lol = lol.__dict__
+        for key,value in lol.items():
+            if(key != 'id' and key !='_state'):
+                families.append(key)
+                families_count.append(value)
+        families = json.dumps(families)
+
+        return render(request, self.template_name, {'colors': colors, 'colors_count':colors_count, 'brands':brands, 'brands_count':brands_count, 'families':families, 'families_count':families_count})
